@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://i.ibb.co/fGtRGvYN/Logotipo-graffiti-VSJ-con-corona-y-pinceladas.png" type="image/x-icon">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Página informativa dedicada a El Astilla VSJ, cantante uruguayo.">
+  <title>El Astilla VSJ | Música y trayectoria</title>
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #141414;
+      --text: #f7f7f7;
+      --muted: #b6b6b6;
+      --accent: #ff8a24;
+      --accent2: #ffcc70;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      padding: 18px clamp(20px, 6vw, 80px); border-bottom: 1px solid #292929;
+      background: rgba(9,9,9,.92); position: sticky; top: 0; z-index: 5;
+      backdrop-filter: blur(12px);
+    }
+    .brand { font-weight: 900; letter-spacing: .08em; }
+    .brand span { color: var(--accent); }
+    nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    nav a { text-decoration: none; color: #d8d8d8; font-size: .92rem; }
+    nav a:hover { color: var(--accent2); }
+    .hero {
+      min-height: 560px; display: grid; grid-template-columns: 1.05fr .95fr;
+      align-items: center; gap: 48px; padding: 70px clamp(20px, 8vw, 120px);
+      background: radial-gradient(ellipse at 80% 30%, #46230f 0%, #17100c 25%, #090909 65%);
+    }
+    .eyebrow {
+      color: var(--accent); text-transform: uppercase; letter-spacing: .2em;
+      font-weight: 800; font-size: .78rem;
+    }
+    h1 { font-size: clamp(3rem, 7vw, 6.2rem); line-height: .96; margin: 16px 0 22px; letter-spacing: -.055em; }
+    h1 span { color: var(--accent); }
+    .hero p { color: #d0d0d0; max-width: 560px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 800;
+      border: 1px solid #555; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--accent); color: #160c04; border-color: var(--accent); }
+    .portrait-wrap { position: relative; max-width: 430px; width: 100%; justify-self: center; }
+    .portrait-wrap::before {
+      content: ""; position: absolute; inset: 18px -16px -16px 18px;
+      border: 2px solid var(--accent); border-radius: 22px; opacity: .8;
+    }
+    .portrait {
+      display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+      border-radius: 22px; position: relative; box-shadow: 0 25px 80px #000b;
+    }
+    section { padding: 78px clamp(20px, 8vw, 120px); }
+    .section-label { color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin: 10px 0 22px; letter-spacing: -.035em; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+    .copy { color: var(--muted); font-size: 1.04rem; }
+    .feature {
+      padding: 28px; border: 1px solid #2b2b2b; border-radius: 20px;
+      background: linear-gradient(145deg, #181818, #101010);
+    }
+    .feature h3 { margin-top: 0; color: var(--accent2); }
+    .feature p { color: var(--muted); margin-bottom: 0; }
+    .quote {
+      margin-top: 26px; padding: 22px 24px; border-left: 3px solid var(--accent);
+      background: #15110e; color: #e9d7c7; border-radius: 0 12px 12px 0;
+    }
+    .socials { background: #101010; }
+    .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .social-card {
+      min-height: 180px; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 24px; border: 1px solid #303030; border-radius: 18px; text-decoration: none;
+      background: #171717; transition: border-color .2s, transform .2s;
+    }
+    .social-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .social-card .platform { font-size: 1.25rem; font-weight: 900; }
+    .social-card .arrow { color: var(--accent); font-size: 1.5rem; }
+    .social-card p { color: var(--muted); margin: 8px 0 16px; }
+    footer {
+      display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap;
+      padding: 24px clamp(20px, 8vw, 120px); color: #929292; font-size: .88rem;
+      border-top: 1px solid #292929;
+    }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero { grid-template-columns: 1fr; padding-top: 54px; }
+      .portrait-wrap { max-width: 340px; }
+      .about-grid, .social-grid { grid-template-columns: 1fr; }
+      section { padding-top: 58px; padding-bottom: 58px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">EL ASTILLA <span>VSJ</span></div>
+    <nav aria-label="Navegación principal">
+      <a href="#biografia">Biografía</a>
+      <a href="#musica">Música</a>
+      <a href="#redes">Redes sociales</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Música uruguaya · Villa San José de Toledo</div>
+        <h1>EL ASTILLA<br><span>VSJ</span></h1>
+        <p>Una página dedicada a El Astilla VSJ, artista uruguayo conocido por su música y por conectar con el público a través de sus canciones y presentaciones.</p>
+        <div class="actions">
+          <a class="btn primary" href="#musica">Conocé su historia ↓</a>
+          <a class="btn" href="https://www.youtube.com/@ElAstilla_vsj" target="_blank" rel="noopener noreferrer">Ver YouTube ↗</a>
+        </div>
+      </div>
+      <div class="portrait-wrap">
+        <img class="portrait" src="data:image/jpeg;base64,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" alt="Fotografía de El Astilla VSJ durante una presentación musical">
+      </div>
+    </section>
+
+    <section id="biografia">
+      <div class="section-label">Sobre el artista</div>
+      <h2>Su historia y su camino musical</h2>
+      <div class="about-grid">
+        <div>
+          <p class="copy">El Astilla VSJ, también conocido como Michelle Rodríguez, es un cantante uruguayo que comenzó a publicar canciones a principios de 2024. Su nombre artístico está vinculado a Villa San José de Toledo, en Canelones, Uruguay.</p>
+          <p class="copy">Con sus temas y sus presentaciones, ha ido llegando a distintos lugares de Canelones, donde se encuentra con personas que disfrutan de su música y, en ocasiones, se acercan para pedirle autógrafos.</p>
+        </div>
+        <article class="feature">
+          <h3>Un nombre para recordar</h3>
+          <p>El Astilla VSJ representa una propuesta musical local que sigue construyendo su identidad y compartiendo su trabajo con el público.</p>
+        </article>
+      </div>
+      <div class="quote">“La música conecta al artista con la gente, canción a canción.”</div>
+    </section>
+
+    <section id="musica">
+      <div class="section-label">Canciones y reconocimiento</div>
+      <h2>Una canción destacada</h2>
+      <p class="copy">Entre los temas por los que se lo reconoce se encuentra <strong style="color:#fff">“T.E.O”</strong>, una canción asociada a sus comienzos y a la escena musical de Villa San José de Toledo. Para escuchar sus publicaciones y conocer sus novedades, visitá sus perfiles oficiales.</p>
+    </section>
+
+    <section class="socials" id="redes">
+      <div class="section-label">Seguilo en internet</div>
+      <h2>Sus redes sociales</h2>
+      <p class="copy">Encontrá sus videos, publicaciones y contenido musical en estos tres enlaces.</p>
+      <div class="social-grid">
+        <a class="social-card" href="https://www.youtube.com/@ElAstilla_vsj" target="_blank" rel="noopener noreferrer">
+          <div><div class="platform">YouTube</div><p>Videos y contenido musical</p></div><div class="arrow">↗</div>
+        </a>
+        <a class="social-card" href="https://www.instagram.com/elastilla_vsj/" target="_blank" rel="noopener noreferrer">
+          <div><div class="platform">Instagram</div><p>Fotos y publicaciones</p></div><div class="arrow">↗</div>
+        </a>
+        <a class="social-card" href="https://www.tiktok.com/@elastilla69" target="_blank" rel="noopener noreferrer">
+          <div><div class="platform">TikTok</div><p>Clips y videos cortos</p></div><div class="arrow">↗</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> · El Astilla VSJ</span>
+    
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
